@@ -1,0 +1,28 @@
+   17  sudo apt update
+   18  sudo apt upgrade
+   19  sudo apt install -y python3-full python3-venv python3-pip
+   20  python3 -m venv ~/mavenv
+   21  source ~/mavenv/bin/activate
+   22  pip install --upgrade pip
+   23  pip install PyYAML mavproxy
+   24  mavproxy.py --version
+   25  python -c "import dronekit; print(dronekit.__version__)"
+   26  pip install dronekit
+   27  python -c "import dronekit; print(dronekit.__version__)"
+   28  pip install future
+   29  mavproxy.py --version
+   30  python -c "import dronekit; print(dronekit.__version__)"
+   31  pip install mavproxy future
+   32  mavproxy.py --version
+   33  pip install setuptools
+   34  mavproxy.py --version
+   35  python
+   36  sudo apt update
+   37  sudo apt install -y python3.11 python3.11-venv python3.11-dev
+   38  mavproxy.py --version
+   39  ls
+   40  source ~/mavenv/bin/activate
+   41  mavproxy.py --version
+   42  python -c "import dronekit; print(dronekit.__version__)"
+   43  pip install dronekit
+   44  python -c "import dronekit; print(dronekit.__version__)"

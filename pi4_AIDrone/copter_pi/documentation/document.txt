@@ -1,0 +1,67 @@
+AI-Drone:
+Steps: 
+1) Components: 
+	i) Hardware
+	ii) Software
+i) Hardware:
+	Flight controller: Pixhwak 6c
+	GPS: M10
+	Radio Telemetry: Holybro->
+	Radio controll: FLysky
+	
+	Frame + Motors + ESC + PD-Distribution + Propoller
+	
+	Flight Computer: Raspberrypi-4
+
+Step 1: Fly manually, mode: Loiter, PosHold, RTL, Land
+
+Step 2: Connect Raspberry pi with Pixhwak
+ Hardware connection: Connect the pixhwak output from type-c to raspberry pi with type-A 
+	Image
+	
+Step 3: Installation i) Drone Libraries, ii) Detection/yolo Libraries iii) Optimization  iv) Final Person Follow Script
+ i) Drone Libraries: 
+	First install the Mavproxy and connect the raspberrypi with pixhwak,
+	check the connection and heartbeat. Then install dronekit.
+	Drone kit library has the compability issue as it won't work with newer python
+ a) Mavproxy, b) Dronekit
+
+	First create the virtual-environment then install Mavproxy and Dronekit
+	Commands from History:
+
+	python3 -m venv ~/mavenv
+	source ~/mavenv/bin/activate
+	pip install PyYAML mavproxy
+	mavproxy.py --version
+	pip install mavproxy future
+	pip install setuptools
+	sudo apt install -y python3.11 python3.11-venv python3.11-dev
+	pip install dronekit
+	Version: 
+	pymavlink          2.4.49
+	MAVProxy           1.8.74
+	future             1.0.0
+	setuptools         80.9.0
+	dronekit           2.9.2 
+	
+	Test:
+	After installing and test sucessfully install you need to test the script with sucessfull flying test. safe Altitude is 5 meter
+	i) Connection.py (check the connection esteblished)
+	ii) arm)disarm.py (Arm and disarm the copter)
+	iii) takeoff_land (takeoff, hover and then LAnd)
+	iv) movement.py (takeoff-> forward, backward -> left ->right -> rotate 360degree -> land)
+	
+	ii) Detection/yolo Libraries
+		After installing and testing of above script 
+		pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+		pip install -U ultralytics
+		yolo predict model=yolo11n.pt source='https://ultralytics.com/images/bus.jpg'
+		pip install opencv-python
+	iii) Optimization:
+		pip install "ultralytics[export]"
+		yolo export model=yolo11n.pt format=ncnn imgz=320
+Step 4: Drone follow and track
+python person_detection_nn.py
+python3 mission_manager.py --real --conn /dev/ttyACM0 --lat 33.7496616 --lon 73.1676921 --alt 25 --takeoff-alt 25
+
+
