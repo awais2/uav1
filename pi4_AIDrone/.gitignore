@@ -1,0 +1,7 @@
+# Secrets / tokens
+*token*
+*toker*
+*.key
+*.pem
+*.env
+.env
