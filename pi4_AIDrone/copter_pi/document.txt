@@ -60,3 +60,8 @@ Step 3: Installation i) Drone Libraries, ii) Detection/yolo Libraries iii) Optim
 	iii) Optimization:
 		pip install "ultralytics[export]"
 		yolo export model=yolo11n.pt format=ncnn imgz=320
+Step 4: Drone follow and track
+python person_detection_nn.py
+python3 mission_manager.py --real --conn /dev/ttyACM0 --lat 33.7496616 --lon 73.1676921 --alt 25 --takeoff-alt 25
+
+
