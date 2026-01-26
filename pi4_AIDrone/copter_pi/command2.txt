@@ -1,0 +1,25 @@
+source ~/mavenv/bin/activate
+
+cd /home/edge/awais/drone_scripts/copter_pi/
+
+#Sainity Check adjust the height
+python connect.py
+python arm_disarm.py
+python takeoff_land.py
+python movement.py
+
+#Detection Algorithm location : main
+python person_detection_nn.py
+
+#updated Script location : updated script
+python movement.py
+python person_follow.py
+python 3_person_follow_search.py
+
+
+Homing and way_point
+
+/home/edge/awais/drone_scripts/copter_pi/updated_script
+python temp_sitl.py
+/home/edge/awais/drone_scripts/copter_pi/updated_script/mission
+python3 mission_manager.py --real --conn /dev/ttyACM0 --lat 33.7496616 --lon 73.1676921 --alt 25 --takeoff-alt 25
